@@ -1,5 +1,9 @@
 # spring-logger
 Logger for Spring
+http://logback.qos.ch/manual/appenders.html#FixedWindowRollingPolicy
+https://viblo.asia/p/spring-logback-config-E375zg6bKGW
+https://stackoverflow.com/questions/46560623/scan-doesnt-work-with-logback-xml
+https://stackoverflow.com/questions/41394606/which-is-the-difference-between-logger-level-and-threshold-filter-level-in-logba/41429453
 
 # Các config trong file logback.xml
 
