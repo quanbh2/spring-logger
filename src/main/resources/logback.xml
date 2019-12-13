@@ -13,10 +13,10 @@
       <totalSizeCap>5GB</totalSizeCap>
     </rollingPolicy>
     <encoder>
-      <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %cyan([%-4relative]) [%thread] %-5level %logger{35}.%M - %msg%n </pattern>
+      <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%-4relative] [%thread] %-5level %logger{35}.%M - %msg%n </pattern>
     </encoder>
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-      <level>INFO</level>
+      <level>DEBUG</level>
     </filter>
   </appender>
 
@@ -32,5 +32,10 @@
     <appender-ref ref="LOG-FILE"/>
     <appender-ref ref="STDOUT"/>
   </root>
+
+  <logger name="net.friend.controller.TestConfigLogger" additivity="false" level="debug">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="LOG-FILE"/>
+  </logger>
 
 </configuration>
