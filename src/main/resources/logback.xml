@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration packagingData="true" scan="true" scanPeriod="10 seconds">
+  <conversionRule conversionWord="mx" converterClass="net.friend.log.CustomMessageConverter" />
+
+<!--  <include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="LOG-FILE">
+    <file>logs/module.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>logs/module-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+      <maxFileSize>1000MB</maxFileSize>
+      <maxHistory>288000</maxHistory>
+      <totalSizeCap>5GB</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %cyan([%-4relative]) [%thread] %-5level %logger{35}.%M - %msg%n </pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>INFO</level>
+    </filter>
+  </appender>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>
+        %d{dd-MM-yyyy HH:mm:ss.SSS} %cyan([%-4relative]) %green([%thread]) %highlight(%-5level) %logger{36}.%M - %magenta(%msg%n)
+      </pattern>
+    </encoder>
+  </appender>
+
+  <root name="data-logger" level="INFO">
+    <appender-ref ref="LOG-FILE"/>
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+</configuration>
