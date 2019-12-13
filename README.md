@@ -23,7 +23,7 @@ If instructed to do so, logback-classic will scan for changes in its configurati
 
 => Thay đổi cấu hình file logback.xml realtime ( khi dùng IDE, sửa file logback.xml trong thư mục target)
 
-3. <include resource="org/springframework/boot/logging/logback/base.xml"/>
+3. "<include resource="org/springframework/boot/logging/logback/base.xml"/>"
 
 Khi sử dụng file logback.xml thì cấu hình mặc định Logback của spring boot sẽ bị override, spring boot sẽ sử dụng cấu hình trong file logback.xml. Nếu ta muốn bao gồm cấu hình mặc định của spring boot thì ta cần thêm config dưới đây bên trong thẻ <configuration>
 Log sẽ được in ra 2 lần nếu dùng cả 2 cấu hình trên.
@@ -48,23 +48,23 @@ Cấp độ log level là TRACE -> DUBUG -> INFO -> WARN -> ERROR.
 
 Nếu muốn ghi log trong từng class ở level khác với root thì ta có thể xác định config ghi log cho từng class như sau
 
-<logger name="com.lankydan.service.MyServiceImpl" level="debug">
+"<logger name="com.lankydan.service.MyServiceImpl" level="debug">
   <appender-ref ref="STDOUT" />
-</logger> 
+</logger> "
 
 Như ta thấy thì mỗi message được ghi ra 2 lần, rõ ràng đây ko phải điều ta muốn. Để xử lý vấn đề này ta cần sử dụng thêm thông tin additivity="false vào cấu hình
 
-<logger name="com.lankydan.service.MyServiceImpl" additivity="false" level="debug">
+"<logger name="com.lankydan.service.MyServiceImpl" additivity="false" level="debug">
   <appender-ref ref="STDOUT" />
-</logger>
+</logger>"
 
 Thậm chí ngay cả khi setting root level là ERROR, bởi setting class level là DEBUG nên nó vẫn override setting ở root level và ghi ra log từ level DEBUG trở lên như bên trên.
 
 Package level logging cũng có thể được định nghĩa bằng cách sử dụng package name thay vì class name. Ví dụ
 
-<logger name="com.lankydan.service" additivity="false" level="debug">
+"<logger name="com.lankydan.service" additivity="false" level="debug">
   <appender-ref ref="STDOUT" />
-</logger> 
+</logger>" 
 
 6. FileAppender
 
@@ -78,7 +78,7 @@ Ví dụ trên cũng setting thêm các tham số maxHistory là thời gian ch�
 7. springProfile
 
 Một tính năng hữu ích nữa mà Spring Boot cung cấp khi sử dụng Logback là khả năng phân tách cấu hình giữa các môi trường. Vì vậy, nếu bạn muốn lưu vào file và in ra console trong môi trường develop của mình nhưng chỉ ghi ra file trong môi trường production thì điều này có thể đạt được một cách dễ dàng
-<?xml version="1.0" encoding="UTF-8"?>
+"<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
   <!-- config for STDOUT and SAVE-TO-FILE -->
@@ -103,14 +103,14 @@ Một tính năng hữu ích nữa mà Spring Boot cung cấp khi sử dụng Lo
     </logger>
   </springProfile>
 
-</configuration>    
+</configuration>    "
 
 8. ThresholdFilter
 
 => Config này là filter của trình ghi log 
-<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+"<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <level>WARN</level>
-</filter>
+</filter>"
 => Còn trình ghi log in log nào ra là do log level quyết định
     
     
